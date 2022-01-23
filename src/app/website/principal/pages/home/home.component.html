@@ -1,0 +1,29 @@
+<app-nav-bar></app-nav-bar>
+
+<section id="inicio">
+
+    <app-home-hero></app-home-hero>
+
+</section>
+
+<section id="servicios">
+
+    <app-titulo>Servicios</app-titulo>
+
+    <div
+         class="container m-auto px-4 sm:px-0 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <app-home-card *ngFor="let servicio of servicios" [servicios]="servicio">
+        </app-home-card>
+    </div>
+
+</section>
+
+
+<footer id="footer" class="h-32 bg-primary mt-8">
+    <div
+         class="flex flex-col justify-center items-center h-32 text-white font-semibold tracking-widest ">
+        <p>Teléfono : 000000008 </p>
+        <p class="">Contáctanos a través de nuestras redes sociales</p>
+        <img src="assets/icons/face.svg" alt="image" class="w-10">
+    </div>
+</footer>

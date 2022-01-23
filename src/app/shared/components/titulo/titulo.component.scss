@@ -1,0 +1,29 @@
+div {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    display: inline-block;
+    margin-bottom: 40px;
+    position: relative;
+    font-family: cursive;
+}
+
+h2::after,
+h2::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 3px;
+    background-color: currentColor;
+    top: 0.6em;
+}
+
+h2::before {
+    left: -140px;
+}
+
+h2::after {
+    right: -140px;
+}

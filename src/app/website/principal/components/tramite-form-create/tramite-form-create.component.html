@@ -1,0 +1,80 @@
+<app-titulo>Tramite de solicitudes</app-titulo>
+
+<form [formGroup]="myForm">
+
+    <!-- ! Nombre y apellidos -->
+    <div class="grid md:grid-cols-2 gap-2">
+        <div id="Nombre">
+            <app-label>Nombre</app-label>
+            <input formControlName="name"
+                   class="input-disabled"
+                   type="text">
+        </div>
+        <div id="Apellidos">
+            <app-label>Apellidos</app-label>
+            <input formControlName="apellidos"
+                   class="input-disabled "
+                   type="text">
+        </div>
+    </div>
+
+    <!-- ! Solo email -->
+    <div id="Email" class="mt-4">
+        <app-label>Email</app-label>
+        <input formControlName="email"
+               class="input-disabled"
+               type="email">
+    </div>
+
+    <!-- ! Telefono y dni -->
+    <div class="grid md:grid-cols-2 gap-2 mt-4">
+        <div id="Telefono">
+            <app-label>Número de celular</app-label>
+            <input formControlName="telefono"
+                   class="input-disabled"
+                   type="tel">
+        </div>
+        <div id="Dni">
+            <app-label>DNI</app-label>
+            <input formControlName="dni"
+                   class="input-disabled"
+                   type="text">
+        </div>
+    </div>
+
+    <!-- ! Matricula y file -->
+    <div class="grid md:grid-cols-2 gap-2 mt-4">
+        <div id="TramitesNombre">
+            <app-label>Tipo de matricula</app-label>
+            <p class="text-alert text-sm">
+                Si es OTRO tipo de tramite o información descríbelo en la
+                descripción
+            </p>
+            <select formControlName="tramite_nombre" class="input-disabled">
+                <option>Selecciona una opción</option>
+                <option *ngFor="let tramite of tramiteNombre">
+                    {{tramite}}
+                </option>
+            </select>
+
+        </div>
+
+        <!-- ! File -->
+        <div id="File">
+            <app-label>Archivo que desea enviar</app-label>
+            <input type="file" class="input-file" />
+        </div>
+    </div>
+
+    <!-- ! Descriptcion -->
+    <div class="mt-4">
+        <app-label>Tipo de descripción</app-label>
+        <textarea formControlName="descriptcion_padre"
+                  class="input-disabled" rows="2"></textarea>
+    </div>
+
+    <div class="flex justify-end mt-4">
+        <app-button (onClickFunction)="handleSubmit()">Enviar</app-button>
+    </div>
+
+</form>
