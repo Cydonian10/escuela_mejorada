@@ -14,6 +14,8 @@ import { HomeCardComponent } from './components/home-card/home-card.component';
 import { TramiteFormCreateComponent } from './components/tramite-form-create/tramite-form-create.component';
 import { TramiteFormInfoComponent } from './components/tramite-form-info/tramite-form-info.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TramiteModelInfoComponent } from './components/tramite-model-info/tramite-model-info.component';
+import { TramiteModalCodigoComponent } from './components/tramite-modal-codigo/tramite-modal-codigo.component';
 
 
 @NgModule( {
@@ -24,7 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeHeroComponent,
     HomeCardComponent,
     TramiteFormCreateComponent,
-    TramiteFormInfoComponent
+    TramiteFormInfoComponent,
+    TramiteModelInfoComponent,
+    TramiteModalCodigoComponent
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   selector: 'app-button',
   template: `
   <button
-        (click)="onClick()"
+        (click)="onClick($event)"
         class="bg-primary py-2 px-20 text-white tracking-widest hover:bg-primary/40 hover:text-primary">
         <ng-content></ng-content>
   </button>
@@ -15,7 +15,7 @@ export class ButtonComponent {
 
   @Output() onClickFunction = new EventEmitter();
 
-  onClick () {
-    this.onClickFunction.emit();
+  onClick ( e: Event ) {
+    this.onClickFunction.emit( e );
   }
 }

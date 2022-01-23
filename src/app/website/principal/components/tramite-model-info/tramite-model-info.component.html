@@ -1,0 +1,44 @@
+<section class="modal" [ngClass]="{'modal--show': show}">
+    <div class="modal__container">
+        <h2 class="modal__title text-2xl font-bold">Tramite :
+            {{ tramite?.tramite_nombre | titlecase }}
+        </h2>
+        <div class="container_body">
+            <div class="body_info">
+                <p>Nombre :</p> <span> {{ tramite?.name }} {{ tramite?.apellidos }}</span>
+            </div>
+            <div class="body_info mt-5">
+                <p>Estado tramite :</p> <span>{{ tramite?.tramite_estado }}</span>
+            </div>
+            <div class="body_info mt-5">
+                <p>Comunicado :</p> <span>{{ tramite?.descriptcion_recepcionista }}</span>
+            </div>
+            <div class="body_info mt-5">
+                <p>Fecha de respuesta :</p> <span>{{ tramite?.updated_at | date }}</span>
+            </div>
+
+            <div *ngIf="!tramite?.archivo_descargar_admin; else descargar">
+                <div class="body_info mt-5">
+                    <p>Archivo para descargar :</p> <span>No tiene</span>
+                </div>
+            </div>
+
+            <ng-template #descargar>
+                <div class="descargar mt-5">
+                    <strong class="descargar_title">Tiene un archivo para descargar:
+                    </strong>
+                    <a #asdownload [href]="tramite?.archivo_descargar_admin"
+                       target="_blanck"
+                       [download]="'asdfadf'">
+                    </a>
+                    <app-button (onClickFunction)="downloadFile()">descargar documento
+                    </app-button>
+                </div>
+            </ng-template>
+
+
+
+        </div>
+        <button (click)="closeModal()" class="modal__close">Cerrar</button>
+    </div>
+</section>

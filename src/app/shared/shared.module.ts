@@ -7,6 +7,7 @@ import { TituloComponent } from './components/titulo/titulo.component';
 import { RouterModule } from '@angular/router';
 import { LabelComponent } from './components/label/label.component';
 import { ButtonComponent } from './components/button/button.component';
+import { ErrorMessageComponent } from './components/error-message/error-message.component';
 
 
 
@@ -18,6 +19,7 @@ import { ButtonComponent } from './components/button/button.component';
     TituloComponent,
     LabelComponent,
     ButtonComponent,
+    ErrorMessageComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { ButtonComponent } from './components/button/button.component';
     ButtonTramiteComponent,
     TituloComponent,
     LabelComponent,
-    ButtonComponent
+    ButtonComponent,
+    ErrorMessageComponent
   ]
 } )
 export class SharedModule { }

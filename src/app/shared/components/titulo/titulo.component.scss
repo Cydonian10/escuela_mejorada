@@ -14,16 +14,16 @@ h2::after,
 h2::before {
     content: "";
     position: absolute;
-    width: 120px;
+    width: 60px;
     height: 3px;
     background-color: currentColor;
     top: 0.6em;
 }
 
 h2::before {
-    left: -140px;
+    left: -65px;
 }
 
 h2::after {
-    right: -140px;
+    right: -65px;
 }

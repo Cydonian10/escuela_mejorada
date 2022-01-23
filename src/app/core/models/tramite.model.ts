@@ -62,10 +62,10 @@ export interface ITramite {
     tramite_estado: ITramiteEstado,
 
     archivo_descargar_admin?: string,
-    visto?: string,
+    visto?: boolean,
     descriptcion_recepcionista?: string,
     created_at?: string,
-    updated_at?: string,
+    updated_at?: Date,
 }
 
 export interface CreateTramiteDto extends Omit<ITramite, 'id'> { }

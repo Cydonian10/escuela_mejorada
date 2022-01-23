@@ -2,19 +2,32 @@
 
 <form [formGroup]="myForm">
 
+    <!-- ! File -->
+    <div id="File">
+        <app-label>Fecha</app-label>
+        <p class="input-disabled mb-4">{{ myForm.get('fecha')?.value }}
+        </p>
+    </div>
+
     <!-- ! Nombre y apellidos -->
     <div class="grid md:grid-cols-2 gap-2">
         <div id="Nombre">
             <app-label>Nombre</app-label>
             <input formControlName="name"
+                   [ngClass]="{'input-invalid': campoInvalido('name')}"
                    class="input-disabled"
                    type="text">
+            <app-error-message *ngIf="campoInvalido('name')">Campo requerido
+            </app-error-message>
         </div>
         <div id="Apellidos">
             <app-label>Apellidos</app-label>
             <input formControlName="apellidos"
+                   [ngClass]="{'input-invalid': campoInvalido('apellidos')}"
                    class="input-disabled "
                    type="text">
+            <app-error-message *ngIf="campoInvalido('apellidos')">Campo requerido
+            </app-error-message>
         </div>
     </div>
 
@@ -22,8 +35,11 @@
     <div id="Email" class="mt-4">
         <app-label>Email</app-label>
         <input formControlName="email"
+               [ngClass]="{'input-invalid': campoInvalido('email')}"
                class="input-disabled"
                type="email">
+        <app-error-message *ngIf="campoInvalido('email')">Campo requerido
+        </app-error-message>
     </div>
 
     <!-- ! Telefono y dni -->
@@ -31,46 +47,60 @@
         <div id="Telefono">
             <app-label>Número de celular</app-label>
             <input formControlName="telefono"
+                   [ngClass]="{'input-invalid': campoInvalido('telefono')}"
                    class="input-disabled"
                    type="tel">
+            <app-error-message *ngIf="campoInvalido('telefono')">Campo requerido
+            </app-error-message>
         </div>
         <div id="Dni">
             <app-label>DNI</app-label>
             <input formControlName="dni"
                    class="input-disabled"
+                   [ngClass]="{'input-invalid': campoInvalido('dni')}"
                    type="text">
+            <app-error-message *ngIf="campoInvalido('dni')">Campo requerido
+            </app-error-message>
         </div>
     </div>
 
     <!-- ! Matricula y file -->
     <div class="grid md:grid-cols-2 gap-2 mt-4">
         <div id="TramitesNombre">
-            <app-label>Tipo de matricula</app-label>
+            <app-label>Tipo de servicio</app-label>
             <p class="text-alert text-sm">
                 Si es OTRO tipo de tramite o información descríbelo en la
                 descripción
             </p>
-            <select formControlName="tramite_nombre" class="input-disabled">
-                <option>Selecciona una opción</option>
-                <option *ngFor="let tramite of tramiteNombre">
+            <select formControlName="tramite_nombre" class="input-disabled"
+                    [ngClass]="{'input-invalid': campoInvalido('tramite_nombre')}">
+                <option value="">Selecciona una opción</option>
+                <option *ngFor="let tramite of tramiteNombre" [value]="tramite">
                     {{tramite}}
                 </option>
             </select>
-
+            <app-error-message *ngIf="campoInvalido('tramite_nombre')">Campo requerido
+            </app-error-message>
         </div>
 
         <!-- ! File -->
         <div id="File">
             <app-label>Archivo que desea enviar</app-label>
-            <input type="file" class="input-file" />
+            <input (change)="uploadFile($event)" type="file" class="input-file" />
+
         </div>
     </div>
+
+
 
     <!-- ! Descriptcion -->
     <div class="mt-4">
         <app-label>Tipo de descripción</app-label>
         <textarea formControlName="descriptcion_padre"
+                  [ngClass]="{'input-invalid': campoInvalido('descriptcion_padre')}"
                   class="input-disabled" rows="2"></textarea>
+        <app-error-message *ngIf="campoInvalido('descriptcion_padre')">Campo requerido
+        </app-error-message>
     </div>
 
     <div class="flex justify-end mt-4">
@@ -78,3 +108,6 @@
     </div>
 
 </form>
+
+<app-tramite-modal-codigo (onShow)="onshow($event)" [codigo]="codigo" [show]="show">
+</app-tramite-modal-codigo>

@@ -1,0 +1,8 @@
+<section class="modal" [ngClass]="{'modal--show': show}">
+    <div class="modal__container">
+        <img src="assets/images/image1.jpg" class="modal__img">
+        <h2 class="modal__title">Tramite exitoso guarde su código</h2>
+        <p class="modal__paragraph text-xl">{{ codigo }}</p>
+        <button (click)="closeModal()" class="modal__close">Cerrar</button>
+    </div>
+</section>

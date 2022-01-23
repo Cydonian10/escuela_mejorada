@@ -1,13 +1,17 @@
 <app-titulo>Código</app-titulo>
 <form>
-
     <div id="Codigo">
         <app-label>Codigo</app-label>
-        <input class="input-disabled "
+        <input [formControl]="myInput"
+               class="input-disabled "
                type="text">
+        <app-error-message>{{ error }}</app-error-message>
     </div>
 
     <div class="mt-4 flex justify-end">
-        <app-button>Enviar</app-button>
+        <app-button (onClickFunction)="handleSubmit($event)">Enviar</app-button>
     </div>
 </form>
+
+<app-tramite-model-info (onShow)="onshow($event)" [tramite]="tramite" [show]="show">
+</app-tramite-model-info>

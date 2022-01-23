@@ -30,6 +30,10 @@ export class TramiteService {
     }
   }
 
+  one ( id: number ) {
+    return this.http.get<RespuestaTramite>( `${ this.url }/api/tramites/${ id }` );
+  }
+
   create ( data: CreateTramiteDto ) {
     return this.http.post<RespuestaTramite>( `${ this.url }/api/tramites`, data ).pipe(
       tap( ( resp ) => this.storeCrate( resp.data ) )

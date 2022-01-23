@@ -8,8 +8,8 @@
 }
 
 .input-invalid {
-    @apply invalid:border-pink-500 invalid:text-pink-600
-focus:invalid:border-pink-500 focus:invalid:ring-pink-500 transition-all duration-200;
+    @apply border-pink-500 text-pink-600
+focus:border-pink-500 focus:ring-pink-500 transition-all duration-200;
 }
 
 .input-file {
