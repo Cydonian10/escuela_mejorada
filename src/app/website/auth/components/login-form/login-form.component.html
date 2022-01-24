@@ -1,0 +1,37 @@
+<form [formGroup]="myForm" class="shadow-lg w-96 shadow-primary/50 p-4">
+
+    <app-titulo>Inicio de sesión</app-titulo>
+
+    <div class="mb-4">
+        <app-label>Email</app-label>
+        <input formControlName="email"
+               [ngClass]="{'input-invalid': campoInvalido('email')}"
+               class="input-disabled"
+               type="text">
+        <app-error-message *ngIf="campoInvalido('email')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div class="mb-4">
+        <app-label>Contraseña</app-label>
+        <input formControlName="password"
+               [ngClass]="{'input-invalid': campoInvalido('password')}"
+               class="input-disabled"
+               type="password">
+        <app-error-message *ngIf="campoInvalido('password')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div *ngIf="statusLogin === 'loading'; else button" class="text-center">
+        <app-button (onClickFunction)="handleSubmit()" [disable]="true">
+            Cargando...
+        </app-button>
+    </div>
+
+    <ng-template #button>
+        <div class=" text-center">
+            <app-button (onClickFunction)="handleSubmit()">Enviar</app-button>
+        </div>
+    </ng-template>
+
+</form>

@@ -28,6 +28,12 @@
       "@core/*": [
         "src/app/core/*"
       ],
+      "@material/*": [
+        "src/app/material/*"
+      ],
+      "@admin/*": [
+        "src/app/admin/*"
+      ],
     },
     "lib": [
       "es2020",

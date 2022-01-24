@@ -11,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
     >
       <ng-content></ng-content>
     </li>
+
   `,
   styleUrls: [ './link.component.scss' ]
 } )
