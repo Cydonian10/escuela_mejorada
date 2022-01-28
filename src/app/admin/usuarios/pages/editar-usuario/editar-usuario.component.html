@@ -1,0 +1,108 @@
+<app-titulo>Editar Usuarios</app-titulo>
+
+<form [formGroup]="myForm">
+
+    <div class="md:grid md:grid-cols-2 gap-2">
+        <div id="Nombre">
+            <app-label>Nombre</app-label>
+            <input formControlName="name"
+                   [ngClass]="{'input-invalid': campoInvalido('name')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('name')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+
+        <div id="Apellidos">
+            <app-label>Apellidos</app-label>
+            <input formControlName="last_name"
+                   [ngClass]="{'input-invalid': campoInvalido('last_name')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('last_name')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+    </div>
+
+
+    <div class="md:grid md:grid-cols-2 gap-2 md:mt-4">
+        <div id="Email">
+            <app-label>Email</app-label>
+            <input formControlName="email"
+                   [ngClass]="{'input-invalid': campoInvalido('email')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('email')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+
+        <div id="dni">
+            <app-label>Dni</app-label>
+            <input formControlName="dni"
+                   [ngClass]="{'input-invalid': campoInvalido('dni')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('dni')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+    </div>
+
+    <div class="md:grid md:grid-cols-2 gap-2 md:mt-4">
+        <div id="Telefono">
+            <app-label>Telefono</app-label>
+            <input formControlName="telefono"
+                   [ngClass]="{'input-invalid': campoInvalido('telefono')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('telefono')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+
+        <div id="dni">
+            <app-label>Grado y Seccion</app-label>
+            <input formControlName="grado_seccion"
+                   [ngClass]="{'input-invalid': campoInvalido('grado_seccion')}"
+                   class="input-disabled "
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('grado_seccion')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+    </div>
+
+    <div class="md:grid md:grid-cols-2 gap-2 md:mt-4">
+        <div>
+            <app-label>Rol del usuario</app-label>
+            <mat-radio-group formControlName="rol" class="mt-5 radio">
+                <mat-radio-button class="mr-3" value="admin">Administrador
+                </mat-radio-button>
+                <mat-radio-button class="mr-3" value="profesor">Profesor
+                </mat-radio-button>
+                <mat-radio-button class="mr-3" value="asistencias">Asistencia
+                </mat-radio-button>
+            </mat-radio-group>
+        </div>
+
+        <div id="dni">
+            <app-label>Password</app-label>
+            <input formControlName="password"
+                   [ngClass]="{'input-invalid': campoInvalido('grado_seccion')}"
+                   class="input-disabled "
+                   autocomplete="on"
+                   type="text">
+            <app-error-message *ngIf="campoInvalido('grado_seccion')">
+                Campo Requerido
+            </app-error-message>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-4">
+        <app-button (onClickFunction)="handleSubmit()">Enviar</app-button>
+    </div>
+
+</form>

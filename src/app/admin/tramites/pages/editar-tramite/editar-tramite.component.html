@@ -1,0 +1,128 @@
+<app-titulo>Revisión de la solicitud</app-titulo>
+
+<form [formGroup]="myForm">
+
+    <div class="nombres md:grid md:grid-cols-2 gap-2 mb-2">
+        <div>
+            <app-label>Nombre</app-label>
+            <input formControlName="name"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su nombre">
+        </div>
+
+
+        <div>
+            <app-label>Apellidos</app-label>
+            <input formControlName="apellidos"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su apellido">
+        </div>
+    </div>
+
+    <div class="email md:grid md:grid-cols-2 gap-2 mb-2">
+        <div>
+            <app-label>fecha</app-label>
+            <input formControlName="fecha"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su fecha">
+        </div>
+
+        <div>
+            <app-label>Email</app-label>
+            <input formControlName="email"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su email">
+        </div>
+    </div>
+
+    <div class="email md:grid md:grid-cols-2 gap-2 mb-2">
+        <div>
+            <app-label>Dni</app-label>
+            <input formControlName="dni"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su Dnis">
+        </div>
+
+        <div>
+            <app-label>Telefono</app-label>
+            <input formControlName="telefono"
+                   class="input-disabled"
+                   matInput placeholder="Ingrese su telefono">
+        </div>
+    </div>
+
+    <div>
+        <app-label>Descriptcion</app-label>
+        <textarea placeholder="Agrege una descripcion"
+                  class="input-disabled"
+                  formControlName="descriptcion_padre">
+             </textarea>
+        <!-- <mat-error *ngIf="getRequired('descriptcion')">Campor requerido</mat-error>
+                          <mat-error *ngIf="getMaxLength('descriptcion')">Maximo 100 caracteres</mat-error> -->
+    </div>
+
+    <div class="descargar my-3" *ngIf="archivoPadre?.value">
+        <strong class="mr-4">Tiene un archivo para descargar :</strong>
+        <a #asdownload [href]="archivoPadre?.value" target="_blanck"
+           [download]="'asdfadf'">
+        </a>
+        <button color="primary" (click)="downloadFile()" mat-raised-button>desacargar
+            documento</button>
+    </div>
+
+    <!-- TODO Administrador -->
+
+    <!-- !Tramites estado-->
+
+    <p>
+        <strong class="mt-4">Tramite Estado</strong>
+    </p>
+    <mat-radio-group formControlName="tramite_estado" class="mt-5 estado_container">
+        <mat-radio-button class="mr-3" value="pendiente">Pendiente</mat-radio-button>
+        <mat-radio-button class="mr-3" value="rechazado">Rechazado</mat-radio-button>
+        <mat-radio-button class="mr-3" value="proceso">Processo</mat-radio-button>
+        <mat-radio-button class="mr-3" value="aprobado">Aprobado</mat-radio-button>
+    </mat-radio-group>
+
+    <div class="w-full mt-4">
+        <p>
+            <label><strong>Subir un archivo para el padre</strong> </label>
+        </p>
+        <input #asInputFile
+               class="input-file"
+               (change)="($event)"
+               type="file">
+    </div>
+
+    <div class="mt-4">
+        <app-label>Descriptcion Administrador</app-label>
+        <textarea placeholder=" Agrege una descripcion"
+                  class="input-disabled"
+                  formControlName="descriptcion_recepcionista"></textarea>
+
+    </div>
+
+    <!-- todo tramite en revisado o ignorado -->
+
+    <div class="mt-4">
+        <p><strong>Marcar si ya lo viste</strong></p>
+        <mat-checkbox formControlName="visto">Visto</mat-checkbox>
+    </div>
+
+
+    <div *ngIf="statusLogin === 'loading'; else button" class="text-center">
+        <app-button (onClickFunction)="handleSubmit()" [disable]="true">
+            Cargando...
+        </app-button>
+    </div>
+
+    <ng-template #button>
+        <div class=" text-center">
+            <app-button (onClickFunction)="handleSubmit()">Enviar</app-button>
+        </div>
+    </ng-template>
+
+    <div class="mb-4">
+
+    </div>
+</form>

@@ -1,2 +1,75 @@
-<p>usuarios works!</p>
-<p>{{ usuarios | json }}</p>
+<div class="mb-3">
+    <button routerLink="crear-usuario" mat-stroked-button class="text-primary">Crear nuevo
+        usuario</button>
+</div>
+<table mat-table [dataSource]="dataSource" matSort
+       class=" mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} {{ element.last_name}}
+        </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="gradoSeccion">
+        <th mat-header-cell *matHeaderCellDef> Grado Seccion </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.grado_seccion}}
+        </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="dni">
+        <th mat-header-cell *matHeaderCellDef> DNI </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.dni}}
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef> Rol </th>
+        <td mat-cell *matCellDef="let element"> {{element.rol}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef> Telefono </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.telefono}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+            <button [routerLink]="['/admin/usuarios', element.id]"
+                    mat-icon-button color="basic">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button (click)="deleteUsuario(element.id,element)"
+                    mat-icon-button color="warn"
+                    aria-label="Example icon button with a menu icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button [routerLink]="['/admin/usuarios/asistencias',element.id]"
+                    mat-icon-button color="basic"
+                    aria-label="Example icon button with a menu icon">
+                <mat-icon>
+                    settings_applications
+                </mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

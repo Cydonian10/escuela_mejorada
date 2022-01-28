@@ -2,6 +2,10 @@
 
     <app-titulo>Inicio de sesión</app-titulo>
 
+    <div class="text-center bg-red-400/40">
+        <app-error-message *ngIf="error">{{error}}</app-error-message>
+    </div>
+
     <div class="mb-4">
         <app-label>Email</app-label>
         <input formControlName="email"

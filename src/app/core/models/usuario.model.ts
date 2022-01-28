@@ -9,7 +9,7 @@ export interface IRespUsuario {
 }
 
 export interface IUsuario {
-    id: string,
+    id: number,
     name: string,
     last_name: string,
     email: string,
@@ -17,9 +17,10 @@ export interface IUsuario {
     rol: string,
     telefono: string,
     grado_seccion: string,
+    password?: string;
     // created_at: Date,
     // updated_at: Date,
 }
 
 export interface CreateUsuarioDto extends Omit<IUsuario, 'id'> { }
-export interface UpdateTramiteDto extends Partial<CreateUsuarioDto> { }
+export interface UpdateUsuarioDto extends Partial<CreateUsuarioDto> { }

@@ -1,0 +1,103 @@
+<app-titulo>Asistencia del Profesor {{usuario?.name }} {{usuario?.last_name}}
+</app-titulo>
+
+
+
+<form (submit)="handleSubmit()" [formGroup]="myForm" class="form-fechas">
+    <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Filtrar fecha</mat-label>
+        <mat-date-range-input [rangePicker]="rangePicker">
+            <input matStartDate placeholder="Start date" formControlName="inicio">
+            <input matEndDate placeholder="End date" formControlName="fin">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matSuffix [for]="rangePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #rangePicker>
+            <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancel</button>
+                <button mat-raised-button color="primary"
+                        matDateRangePickerApply>Apply</button>
+            </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+    </mat-form-field>
+
+    <button type="submit" color="primary"
+            mat-raised-button>Enviar</button>
+</form>
+
+
+<div class="mt-4" *ngIf="asistenciasMostrar.length === 0; else table">
+    Realize una busqueda por fecha 😉
+</div>
+
+
+<ng-template #table>
+    <!-- (click)="exporter.exportTable('xlsx')" -->
+
+    <button mat-raised-button
+            class="green">
+        <mat-icon>download_for_offline</mat-icon>
+        Excel
+    </button>
+
+    <div class="example-container mat-elevation-z8">
+        <!-- #exporter="matTableExporter" -->
+        <table matTableExporter
+               mat-table
+               class="mat-elevation-z8 w-full"
+               [dataSource]="asistenciasMostrar">
+
+            <ng-container matColumnDef="Entrada">
+                <th mat-header-cell *matHeaderCellDef> Entrada </th>
+                <td mat-cell *matCellDef="let element"> {{element.hora_entrada}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Salida">
+                <th mat-header-cell *matHeaderCellDef> Salida </th>
+                <td mat-cell *matCellDef="let element"> {{element.hora_salida}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Fecha">
+                <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Descripcion Salida">
+                <th mat-header-cell *matHeaderCellDef> Descripcion Salida </th>
+                <td mat-cell *matCellDef="let element"> {{element.description_salida}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Tardanza">
+                <th mat-header-cell *matHeaderCellDef> Descripcion Tarde </th>
+                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Asistio">
+                <th mat-header-cell *matHeaderCellDef> Asistio </th>
+                <td mat-cell *matCellDef="let element"> {{element.asistio ? 'si' : 'no'}}
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Asistidos">
+                <th mat-header-cell *matHeaderCellDef>Asistidos</th>
+                <td mat-cell *matCellDef="let element"> {{element?.asistidos}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef>Total de dias</th>
+                <td mat-cell *matCellDef="let element"> {{element?.total}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="nombre">
+                <th mat-header-cell *matHeaderCellDef>Nombre</th>
+                <td mat-cell *matCellDef="let element"> {{element?.name}}
+                    {{element?.lastName}}
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+</ng-template>

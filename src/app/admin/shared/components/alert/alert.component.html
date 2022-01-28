@@ -1,0 +1,8 @@
+<div
+     [ngClass]="{
+         'bg-green-400': type == 'success',
+         'bg-red-400':type == 'error'
+        }"
+     class="py-2 border-l-4 border-black px-3  text-white top-8 left-0 absolute z-50 alert w-52 shadow-lg">
+    <ng-content></ng-content>
+</div>

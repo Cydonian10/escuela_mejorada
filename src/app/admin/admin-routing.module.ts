@@ -9,8 +9,24 @@ const routes: Routes = [
     component: NavBarComponent,
     children: [
       {
-        path: "",
+        path: "usuarios",
         loadChildren: () => import( "./usuarios/usuarios.module" ).then( m => m.UsuariosModule )
+      },
+      {
+        path: "tramites",
+        loadChildren: () => import( "./tramites/tramites.module" ).then( m => m.TramitesModule )
+      },
+      {
+        path: "configuracion",
+        loadChildren: () => import( "./setting/setting.module" ).then( m => m.SettingModule )
+      },
+      {
+        path: "posts",
+        loadChildren: () => import( "./post/post.module" ).then( m => m.PostModule )
+      },
+      {
+        path: "asistencias",
+        loadChildren: () => import( "./asistencias/asistencias.module" ).then( m => m.AsistenciasModule )
       }
     ]
   },

@@ -23,7 +23,9 @@ export class TramiteService {
     if ( this.storeTramites.value.length === 0 ) {
       this.http.get<RespuestaTramites>( `${ this.url }/api/tramites` ).subscribe(
         {
-          next: ( resp ) => this.storeTramites.next( resp.data.data ),
+          next: ( resp ) => {
+            this.storeTramites.next( resp.data.data );
+          },
           error: () => console.log( 'salio mal' )
         }
       );
@@ -52,7 +54,7 @@ export class TramiteService {
     );
   }
 
-
+  //! ** Store de Tramites **
   storeCrate ( data: ITramite ) {
     this.storeTramites.next( [ ...this.storeTramites.value, data ] );
   }

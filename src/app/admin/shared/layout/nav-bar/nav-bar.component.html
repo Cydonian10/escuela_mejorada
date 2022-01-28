@@ -4,20 +4,28 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
+    <mat-toolbar class="bg-primary text-white">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item
-         class="bg-green-500/50 shadow-lg shadow-green-500/20 hover:bg-green-700 focus:bg-green-700"
-         href="#">
-        Link1
-      </a>
-      <a href="" class="block px-3 bg-green-500 py-3 hover:bg-purple-500">todoes</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <app-link-admin icon="person_pin" url="/admin/usuarios">
+        Usuarios
+      </app-link-admin>
+      <app-link-admin icon="receipt_long" url="/admin/tramites">
+        Tramites
+      </app-link-admin>
+      <app-link-admin icon="event_busy" url="/admin/asistencias">
+        Asistencias
+      </app-link-admin>
+      <app-link-admin icon="post_add" url="/admin/posts">
+        Post
+      </app-link-admin>
+      <app-link-admin icon="settings" url="/admin/configuracion">
+        Configuracion
+      </app-link-admin>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar class="bg-primary text-white">
+
       <button
               type="button"
               aria-label="Toggle sidenav"
@@ -26,10 +34,16 @@
               *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>escuela_mejorada</span>
+      <h2>Nombre de la escuela</h2>
+
+      <div class="flex-1"></div>
+
+      <p class="pr-5">{{ (user$ | async)?.name }}</p>
+      <button color="priamry" mat-raised-button (click)="logaout()">Salir</button>
+
     </mat-toolbar>
 
-    <div class="container m-auto px-2 md:px-4">
+    <div class="container m-auto px-2 md:px-4 mt-3">
       <router-outlet></router-outlet>
     </div>
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ILoginData } from '@core/models/auth.model';
+import { ILoginData, IResAuth } from '@core/models/auth.model';
 import { AuthService } from '@core/services/auth.service';
 import { Subscription } from 'rxjs';
 
@@ -14,6 +14,7 @@ export class LoginFormComponent implements OnInit {
 
   //private subscription = new Subscription();
   statusLogin: 'loading' | 'success' | 'error' | 'init' = 'init';
+  error: string = "";
 
   myForm = this.fb.group( {
     'email': [ , [ Validators.required ] ],
@@ -43,16 +44,23 @@ export class LoginFormComponent implements OnInit {
     this.statusLogin = 'loading';
     this.authService.login( value ).subscribe(
       {
-        next: () => {
-          this.statusLogin = 'success';
-          this.router.navigateByUrl( "/admin/usuarios" );
-        },
-        error: ( resp ) => {
-          console.log( resp );
-          this.statusLogin = 'error';
-        }
+        next: ( resp ) => this.handleNext( resp ),
+        error: ( resp ) => this.handleError( resp )
       }
     );
   }
 
+
+  //! ** Estados de submit **
+  handleNext ( resp: IResAuth ) {
+    this.statusLogin = 'success';
+    this.error = '';
+    resp.message === 'El usuario no existe' ?
+      this.error = resp.message : this.router.navigateByUrl( "/admin/usuarios" );
+  }
+
+  handleError ( resp: string ) {
+    this.statusLogin = 'error';
+    this.error = resp;
+  }
 }

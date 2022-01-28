@@ -7,12 +7,12 @@ export class LocalStorageService {
 
   constructor() { }
 
-  save ( value: any ) {
-    localStorage.setItem( 'user', JSON.stringify( value ) );
+  save ( value: any, nombre: string ) {
+    localStorage.setItem( nombre, JSON.stringify( value ) );
   }
 
-  get () {
-    const user = JSON.parse( localStorage.getItem( 'user' )! ) || null;
+  get ( nombre: string ) {
+    const user = JSON.parse( localStorage.getItem( nombre )! ) || null;
     return user;
   }
 }

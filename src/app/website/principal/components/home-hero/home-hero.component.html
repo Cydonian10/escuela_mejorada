@@ -3,10 +3,10 @@
     <aside class="hero-image-opacity text-center flex items-center justify-center">
         <div class="hero-image-content">
             <h2 class="text-5xl font-bold tracking-widest text-white mb-4">
-                {{'Nombre del colegio' | titlecase}}
+                {{ config.nombre_escuela| titlecase}}
             </h2>
             <p class="font-semibold mb-4 font-sans text-2xl">
-                Frase de la escuela
+                {{config.frase_escuela | titlecase}}
             </p>
             <app-button-tramite>Tramites</app-button-tramite>
         </div>

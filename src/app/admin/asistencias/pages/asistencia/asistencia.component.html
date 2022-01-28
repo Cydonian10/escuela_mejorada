@@ -1,0 +1,51 @@
+<button routerLink="salida" mat-raised-button class="bg-alert">Marcar Salida</button>
+
+<div class="container mt-5">
+    <app-titulo>Marcar Asistencia Profesor</app-titulo>
+
+    <mat-form-field class="w-full" appearance="standard">
+        <mat-label>Email</mat-label>
+        <input type="text" [formControl]="myInput"
+               matInput placeholder="Ingrese su email">
+        <mat-error>Campor requerido</mat-error>
+    </mat-form-field>
+
+    <div class="flex justify-center w-full">
+        <button (click)="usuarioByEmail()"
+                class="bg-primary w-52 text-white" mat-stroked-button>
+            Marcar Entrada
+        </button>
+    </div>
+
+    <div *ngIf="error" class="text-red-400 text-xs">
+        Error su email no existe
+    </div>
+
+</div>
+
+<div class="container mt-5 flex justify-center">
+
+    <div class="asistencia_name_profesor shadow-lg w-80 p-4" *ngIf="usuario.name">
+
+        <div>
+            <strong>Profesor: </strong> {{usuario.name}} {{usuario.last_name}}
+        </div>
+
+        <div class="mt-5" mat-dialog-content>
+
+            <p><strong>Hora de Entrada : </strong>{{ horaEntrada | date:'hh:mm a' }}</p>
+
+        </div>
+
+        <div class="container_buttons mt-5 flex gap-2">
+            <button class="bg-red-400 text-white"
+                    routerLink="/admin/asistencias/salida"
+                    mat-stroked-button>Cancelar</button>
+            <button (click)="marcarAsistencia()"
+                    class="bg-primary text-white" mat-stroked-button>
+                Registrar Entrada
+            </button>
+        </div>
+    </div>
+
+</div>

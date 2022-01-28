@@ -22,8 +22,10 @@
 <footer id="footer" class="h-32 bg-primary mt-8">
     <div
          class="flex flex-col justify-center items-center h-32 text-white font-semibold tracking-widest ">
-        <p>Teléfono : 000000008 </p>
+        <p>Teléfono : {{(config | async)?.telefono_escuela }} </p>
         <p class="">Contáctanos a través de nuestras redes sociales</p>
-        <img src="assets/icons/face.svg" alt="image" class="w-10">
+        <a [href]="(config | async )?.facebook_esculea">
+            <img src="assets/icons/face.svg" alt="image" class="w-10">
+        </a>
     </div>
 </footer>

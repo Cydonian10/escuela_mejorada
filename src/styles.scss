@@ -16,6 +16,10 @@ focus:border-pink-500 focus:ring-pink-500 transition-all duration-200;
     @apply mt-5 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0  file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20;
 }
 
+.active {
+    @apply bg-secundary/90 text-white;
+}
+
 :root {
     --color-primary: #015b99;
     --color-secundary: #f6b218;

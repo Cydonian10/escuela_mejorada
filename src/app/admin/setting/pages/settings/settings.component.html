@@ -1,0 +1,66 @@
+<app-titulo>Datos de la escuela</app-titulo>
+
+<form [formGroup]="myForm">
+
+    <div class="mb-4">
+        <app-label>Nombre de la escuela</app-label>
+        <input formControlName="nombre_escuela"
+               [ngClass]="{'input-invalid': campoInvalido('nombre_escuela')}"
+               class="input-disabled"
+               type="text">
+        <app-error-message *ngIf="campoInvalido('nombre_escuela')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div class="mb-4">
+        <app-label>Teléfono</app-label>
+        <input formControlName="telefono_escuela"
+               [ngClass]="{'input-invalid': campoInvalido('telefono_escuela')}"
+               class="input-disabled"
+               type="tel">
+        <app-error-message *ngIf="campoInvalido('telefono_escuela')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div class="mb-4">
+        <app-label>Facebook</app-label>
+        <input formControlName="facebook_esculea"
+               [ngClass]="{'input-invalid': campoInvalido('facebook:esculea')}"
+               class="input-disabled"
+               type="text">
+        <app-error-message *ngIf="campoInvalido('facebook_esculea')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div class="mb-4">
+        <app-label>Frase</app-label>
+        <input formControlName="frase_escuela"
+               [ngClass]="{'input-invalid': campoInvalido('frase')}"
+               class="input-disabled"
+               type="text">
+        <app-error-message *ngIf="campoInvalido('frase_escuela')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div class="mb-4">
+        <app-label>Descripición</app-label>
+        <textarea class="input-disabled"
+                  [ngClass]="{'input-invalid': campoInvalido('description')}"
+                  formControlName="description"
+                  cols="2"></textarea>
+        <app-error-message *ngIf="campoInvalido('description')">Campo requerido
+        </app-error-message>
+    </div>
+
+    <div *ngIf="statusLogin === 'loading'; else button" class="text-center">
+        <app-button (onClickFunction)="handleSubmit()" [disable]="true">
+            Cargando...
+        </app-button>
+    </div>
+
+    <ng-template #button>
+        <div class=" text-center">
+            <app-button (onClickFunction)="handleSubmit()">Enviar</app-button>
+        </div>
+    </ng-template>
+</form>

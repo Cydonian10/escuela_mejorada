@@ -42,7 +42,7 @@ export class TramiteFormCreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private uploadImageService: UploadImageService,
-    private tramiteService: TramiteService
+    private tramiteService: TramiteService,
   ) { }
 
   ngOnInit (): void {
@@ -77,6 +77,7 @@ export class TramiteFormCreateComponent implements OnInit {
     } );
 
     this.myForm.reset();
+
   }
 
 }
