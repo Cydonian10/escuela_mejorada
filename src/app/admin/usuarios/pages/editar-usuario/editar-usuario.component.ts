@@ -23,7 +23,6 @@ export class EditarUsuarioComponent implements OnInit {
     email: [ '', [ Validators.required ] ],
     dni: [ '', [ Validators.required ] ],
     rol: [ 'admin', [ Validators.required ] ],
-    password: [ '', [ Validators.required ] ],
     telefono: [ '', [ Validators.required ] ],
     grado_seccion: [ '', [ Validators.required ] ],
   } );

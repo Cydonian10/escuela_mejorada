@@ -31,17 +31,17 @@
 
 
 <ng-template #table>
-    <!-- (click)="exporter.exportTable('xlsx')" -->
 
     <button mat-raised-button
+            (click)="exporter.exportTable('xlsx')"
             class="green">
         <mat-icon>download_for_offline</mat-icon>
         Excel
     </button>
 
     <div class="example-container mat-elevation-z8">
-        <!-- #exporter="matTableExporter" -->
         <table matTableExporter
+               #exporter="matTableExporter"
                mat-table
                class="mat-elevation-z8 w-full"
                [dataSource]="asistenciasMostrar">

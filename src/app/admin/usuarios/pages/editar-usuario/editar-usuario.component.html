@@ -87,18 +87,6 @@
                 </mat-radio-button>
             </mat-radio-group>
         </div>
-
-        <div id="dni">
-            <app-label>Password</app-label>
-            <input formControlName="password"
-                   [ngClass]="{'input-invalid': campoInvalido('grado_seccion')}"
-                   class="input-disabled "
-                   autocomplete="on"
-                   type="text">
-            <app-error-message *ngIf="campoInvalido('grado_seccion')">
-                Campo Requerido
-            </app-error-message>
-        </div>
     </div>
 
     <div class="flex justify-center mt-4">

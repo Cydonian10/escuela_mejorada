@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 } )
 export class AsistenciaComponent implements OnInit {
 
-  myInput: FormControl = new FormControl( 'admin@hotmail.com', Validators.required );
+  myInput: FormControl = new FormControl( '', Validators.required );
   error: boolean = false;
   usuario: IUsuario = {} as IUsuario;
   horaEntrada: Date = new Date();

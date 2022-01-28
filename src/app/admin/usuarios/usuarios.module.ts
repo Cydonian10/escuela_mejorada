@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EditarUsuarioComponent } from './pages/editar-usuario/editar-usuario.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 import { AsistenciasByUserComponent } from './pages/asistencias-by-user/asistencias-by-user.component';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 
 @NgModule( {
@@ -25,7 +26,8 @@ import { AsistenciasByUserComponent } from './pages/asistencias-by-user/asistenc
     UsuariosRoutingModule,
     MaterialModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableExporterModule
   ]
 } )
 export class UsuariosModule { }
