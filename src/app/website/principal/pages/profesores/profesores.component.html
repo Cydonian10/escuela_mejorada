@@ -1,1 +1,25 @@
-<p>profesores works!</p>
+<app-nav-bar></app-nav-bar>
+
+<app-titulo>Profesores</app-titulo>
+
+<div class="container m-auto">
+    <div *ngFor="let profe of profesores"
+         class="shadow-lg shadow-gray-400 p-4 flex justify-evenly">
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mb-2">Profesor</span>
+            <p>{{ profe.name}} {{ profe.last_name }}</p>
+        </div>
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mb-2">Grado</span>
+            <p>{{ profe.grado_seccion}}</p>
+        </div>
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mb-2">Email</span>
+            <p>{{ profe.email}}</p>
+        </div>
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mb-2">Telefono</span>
+            <p>{{ profe.telefono}}</p>
+        </div>
+    </div>
+</div>

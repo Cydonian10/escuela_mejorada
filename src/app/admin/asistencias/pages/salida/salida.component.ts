@@ -41,12 +41,12 @@ export class SalidaComponent implements OnInit {
     this.subscription.add(
       refDialog.afterClosed().subscribe( resp => {
         if ( !resp ) {
-          this.openMessage( 'cancelado', '🙁' );
+          this.openEnviado( 'Cancelado', '🙁' );
           return;
         }
         this.asistenciaService.update( { ...resp, asistio: 1 }, salida.id ).subscribe( () => {
           this.asistenciaService.actulizarLocalStorage( { ...resp, asistio: 1 }, salida.id );
-          this.openMessage( 'Marco asistencia con exito', '😃' );
+          this.openEnviado( 'Marco asistencia con exito', '😃' );
 
         } );
       } )
@@ -61,23 +61,33 @@ export class SalidaComponent implements OnInit {
     this.subscription.add(
       refDialog.afterClosed().subscribe( resp => {
         if ( !resp ) {
-          this.openMessage( 'cancelado', '🙁' );
+          this.openEnviado( 'Cancelado', '🙁' );
           return;
         }
         this.asistenciaService.limpiarRegistrosAsitencia();
         this.getAsitenciasDia();
-        this.openMessage( 'eliminado asistencias del dia', ':)' );
+        this.openEnviado( 'Eliminado asistencias del dia', ':)' );
       } )
     );
   }
 
 
-  //!RETROALIMENTACION DE LO SUCCEDIDO 
-  openMessage ( message: string, carita: string ) {
+  //! ** Respuestas **
+  openCancel ( message: string, carita: string ) {
     this._snackBar.open( message, carita, {
       horizontalPosition: 'start',
       verticalPosition: 'top',
-      duration: 5000
+      duration: 5000,
+      panelClass: [ 'bg-red-400', 'text-red-900', 'border-l-4', 'border-red-800', 'font-semibold', 'tracking-widest' ]
+    } );
+  }
+
+  openEnviado ( message: string, carita: string ) {
+    this._snackBar.open( message, carita, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 5000,
+      panelClass: [ 'bg-green-400', 'text-green-900', 'border-l-4', 'border-green-800', 'font-semibold', 'tracking-widest' ]
     } );
   }
 }
